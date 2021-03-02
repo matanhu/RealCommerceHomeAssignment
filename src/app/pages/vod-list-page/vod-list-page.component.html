@@ -1,0 +1,37 @@
+<div class="list-container" [class.list-display]="viewAsList | async" [class.grid-display]="!(viewAsList | async)">
+    <div class="grid-container grid-headers" *ngIf="!(viewAsList | async)">
+        <div class="grid-cell">Image</div>
+        <div class="grid-cell">Title</div>
+        <div class="grid-cell">Year</div>
+    </div>
+    <div class="item-container grid-container row" *ngFor="let item of (vodList | async); let i = index">
+        <div class="col-3 item-img-container grid-cell">
+            <img [src]="item.Poster" (click)="onImgClicked(item)">
+        </div>
+        <ng-container *ngIf="!(viewAsList | async)">
+            <div class="title-container grid-cell">
+                <ng-container *ngTemplateOutlet="itemTitle;  context:{item: item, index:i}"></ng-container>
+            </div>
+            <div class="year-container grid-cell">
+                {{item.Year | formatDate | date: 'dd-MM-yyyy'}}
+            </div>
+        </ng-container>
+
+        <div class="col-9 item-body" *ngIf="viewAsList | async">
+            <div class="title-container">
+                <ng-container *ngTemplateOutlet="itemTitle;  context:{item: item, index:i}"></ng-container>
+            </div>
+            <div class="year-container">
+                {{item.Year | formatDate | date: 'dd-MM-yyyy'}}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #itemTitle let-item="item" let-index="index">
+    <span (click)="onSelectEditItem(index, item.Title)" *ngIf="index !== editItem.index">{{item.Title}}</span>
+    <form #form="ngForm" *ngIf="index === editItem.index">
+        <input type="text" class="form-control" [(ngModel)]="editItem.value" name="editItem" (blur)="onBlurInput(item)" appFocusOnInit>
+    </form>
+</ng-template>

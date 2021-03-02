@@ -1,0 +1,7 @@
+<ul class="navbar-list">
+    <li class="navbar-item" *ngFor="let item of navbarMap | keyvalue" routerLinkActive="router-link-active">
+        <a class="navbar-item-link" [routerLink]="['/tag', item.key]" >
+            {{item.key | titlecase }} ({{item.value}})
+        </a>
+    </li>
+</ul>

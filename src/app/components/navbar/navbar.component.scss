@@ -1,0 +1,23 @@
+.navbar-list {
+    list-style: none;
+    padding: 0;
+
+    .navbar-item {
+        padding: 15px;
+        border: 1px solid;
+        margin: 0 0 15px 0;
+        border-radius: 8px;
+        
+        &.router-link-active {
+            background: #e3e3e3;
+        }
+
+        .navbar-item-link {
+            width: 100%;
+            height: 100%;
+            display: block;
+            position: relative;
+            white-space: nowrap;
+        }
+    }
+}

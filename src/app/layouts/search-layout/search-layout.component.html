@@ -1,0 +1,28 @@
+<div class="container">
+    <section class="filter-section">
+      <div class="d-flex">
+        <div class="p-2">
+          <app-searchbar></app-searchbar>
+        </div>
+        <div class="p-2">
+          <button type="button" class="btn btn-primary" (click)="loadVod()">Refresh</button>
+        </div>
+        <div class="p-2">
+          <button type="button" class="btn btn-primary" (click)="changeSort()">
+            <span *ngIf="isAsc | async">Asc</span>
+            <span *ngIf="!(isAsc | async)">Desc</span>
+          </button>
+        </div>
+      </div>
+    </section>
+    <div class="d-flex">
+      <nav class="p-2">
+        <app-navbar [navbarMap]="navbarMap"></app-navbar>
+        <input type="checkbox" id="display-toggle" class="toggle-checkbox" [checked]="isViewAsList | async" (click)="changeView()">
+        <label for="display-toggle">List View</label>
+      </nav>
+      <div class="p-2 flex-fill">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>

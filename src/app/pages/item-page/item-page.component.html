@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="back-btn-container">
+        <button type="button" (click)="goBack()">Go Back</button>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-4 col-xl-2">
+            <img [src]="(vodItem | async)?.Poster">
+        </div>
+        <div class="col-12 col-md-6 col-lg-8 col-xl-10">
+            <div class="d-flex">
+                <div class="header font-weight-bold">Title: </div>
+                <div class="detaild">{{(vodItem | async)?.Title}}</div>
+            </div>
+            <div class="d-flex">
+                <div class="header font-weight-bold">Year: </div>
+                <div class="detaild">{{(vodItem | async)?.Year | formatDate | date: 'dd-MM-yyyy'}}</div>
+            </div>
+            <div class="d-flex">
+                <div class="header font-weight-bold">Type: </div>
+                <div class="detaild">{{(vodItem | async)?.Type}}</div>
+            </div>
+        </div>
+    </div>
+</div>

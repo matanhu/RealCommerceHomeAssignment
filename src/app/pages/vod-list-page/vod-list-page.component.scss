@@ -1,0 +1,38 @@
+.item-container {
+    margin: 0 0 15px 0;
+    border: 1px solid;
+    padding: 15px;
+    border-radius: 8px;
+
+    .item-img-container {
+        img {
+            max-width: 100%;
+        }
+    }
+}
+
+.grid-display {
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 5px;
+        flex-wrap: unset;
+        margin: 0;
+        border-radius: 0;
+        padding: 0;
+        border: 1px solid;
+        border-top: none;
+        border-right: none;
+    }
+
+    .grid-headers {
+        border-top: 1px solid;
+    }
+    
+    .grid-cell {
+        flex: none;
+        max-width: unset;
+        padding: 10px;
+        border-right: 1px solid;
+    }
+}

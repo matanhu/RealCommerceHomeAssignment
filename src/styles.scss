@@ -1,1 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+
+/*Toggle Style*/ 
+.toggle-checkbox {
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+.toggle-checkbox + label {
+    padding-bottom: 24px;
+    position: relative;
+}
+
+.toggle-checkbox + label:before {content: '';width: 60px;height: 24px;display: block;border-radius: 34px;position: absolute;bottom: 0;background-color: #ccc; transition: all .35s;}
+
+.toggle-checkbox + label:after {
+    content: '';
+    width: 30px;
+    height: 20px;
+    display: block;
+    border-radius: 34px;
+    position: absolute;
+    bottom: 2px;
+    left: 3px;
+    background-color: #fff;
+    transition: all .35s;
+}
+
+.toggle-checkbox:checked + label:before {
+    background-color:#2196F3;
+}
+
+.toggle-checkbox:checked + label:after {
+    transform: translateX(23px);
+}
