@@ -1,27 +1,25 @@
-# RealCommerceHomeAssignment
+# Real Commerce Home Assignment
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.2.
+## Requirements:
+### Create an angular application, using all angular elements(components, filters, services, etc)
 
-## Development server
+1.	Make an api call to the response.json file
+2.	Handle api call error if call fails
+3.	Show all json response, split them by the type and count them
+4.	Create tabs, by name and item count, each click will display the relevant items
+5.	Create a toggle button, switching the view from list to grid
+6.	Create a search field, when typing a value, display only the items that contain the value in the name or year
+7.	Create a “clear” button - clears the search
+8.	Create a refresh button that refresh the data again from the server
+9.	Default sorting to the list is by name asc, create a sort button that switch between asc/desc
+10.	In the item name - clicking on the item name will change the text into input with the name of the item, changing the value and blur will make an api call to update the item (no need to implement the server of course, just launch an api call to update). The api call will be triggered only if the value was actually changed
+11.	Clicking on the image will go to an item route displaying the item details (design as you wish), include a “back” button in the item page
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+####  Notes
+1.	Show formatted year 
+2.	Dont show image if the image url is does not exists
+3.	Use bootstrap
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+![](RealCommerceHomeAssignment.png)
