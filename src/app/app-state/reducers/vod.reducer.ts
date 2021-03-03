@@ -1,8 +1,9 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
 import { Action, createReducer, on } from "@ngrx/store";
-import * as vodActions from '../actions';
 import { VodEntity } from "../entities/vod.entity";
+import * as vodActions from '../actions';
 
+// State Of VOD
 export interface VodState extends EntityState<VodEntity> {
     filterValue: string;
     isLoading: boolean;
@@ -14,6 +15,7 @@ export interface VodState extends EntityState<VodEntity> {
 export function selectVodItemId(a: VodEntity): string {
     return a.imdbID;
 }
+
 
 export const vodAdapter: EntityAdapter<VodEntity> = createEntityAdapter<VodEntity>({
     selectId: selectVodItemId,
@@ -67,6 +69,7 @@ const vodReducer = createReducer(
     })
 );
 
+// Reducers of VOD
 export function reducer(state: VodState | undefined, action: Action): any {
     return vodReducer(state, action);
 }
@@ -78,5 +81,5 @@ export const {
     selectEntities,
     selectAll,
     selectTotal,
-  } = vodAdapter.getSelectors();
+} = vodAdapter.getSelectors();
 

@@ -6,7 +6,9 @@ import { of } from "rxjs";
 
 import * as vodActions from '../actions';
 
-
+/*
+  Listen to Action of NGRX and do Side Effects
+*/ 
 
 @Injectable()
 export class VodEffects {
@@ -16,6 +18,12 @@ export class VodEffects {
     private vodService: VodService
   ) { }
 
+  /*
+    Side Effect of loadVod action
+    Load data from server,
+    On Success dispatch loadVodSuccess action
+    On Failure dispatch loadVodFailure action
+  */ 
   loadVod$ = createEffect(() =>
     this.actions$.pipe(
       ofType(vodActions.loadVod),
@@ -30,6 +38,12 @@ export class VodEffects {
     )
   );
 
+  /*
+    Side Effect of editVodItem action
+    Load data from server,
+    On Success dispatch editVodItemSuccess action
+    On Failure dispatch editVodItemFailure action
+  */ 
   editVodItem$ = createEffect(() =>
     this.actions$.pipe(
       ofType(vodActions.editVodItem),

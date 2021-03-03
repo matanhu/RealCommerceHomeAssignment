@@ -14,15 +14,20 @@ export class VodService {
     private httpClient: HttpClient
   ) { }
 
+  // Load VOD from json file and return as Array of VodEntity after mapping
   loadVod(): Observable<Array<VodEntity>> {
     return this.httpClient.get('/assets/server/angular_Response.json').pipe(
       map((res: any) => {
         return res.results;
-    }));
+      })
+    );
   }
 
+
+  // Load VOD from json file and return as Array of VodEntity after mapping
+  // For simulate success response of editItem - you can uncomment pipe and catchError Operator
   editVodItem(vod: any) {
-    return this.httpClient.post('/updateItem', vod)
+    return this.httpClient.post('/editItem', vod)
     // .pipe(
     //   catchError((err) => {
     //     return of(true);

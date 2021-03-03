@@ -5,17 +5,15 @@ import {
     createSelector,
     MetaReducer
 } from '@ngrx/store';
-//   import { localStorageSync } from 'ngrx-store-localstorage';
 import { environment } from '../../environments/environment';
 import { getDateFromString } from '../pipes/format-date.pipe';
 import { VodEntity } from './entities/vod.entity';
-import * as fromVod from './reducers/vod.reducer';
 import { formatDate } from '@angular/common';
 import { Dictionary } from '@ngrx/entity';
+import * as fromVod from './reducers/vod.reducer';
 
 
-
-
+// State Interface
 export interface State {
     vod: fromVod.VodState;
 }
@@ -24,6 +22,7 @@ export const reducers: ActionReducerMap<State> = {
     vod: fromVod.reducer,
 };
 
+// On Debug log each action to console and current state before create reducer
 export function debug(reducer: ActionReducer<any>): ActionReducer<any> {
     return function (state, action) {
         console.log('state', state);
@@ -34,8 +33,6 @@ export function debug(reducer: ActionReducer<any>): ActionReducer<any> {
 }
 
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [debug] : [];
-
-
 
 // Vod Selectors
 export const getVodState = createFeatureSelector<fromVod.VodState>('vod');
@@ -48,15 +45,20 @@ export const getVod = createSelector(
 export const getVodEntities = createSelector(
     getVodState,
     fromVod.selectEntities
-)
+);
 
+// Select VodItem by imdbID from NGRX Entiry 
 export const getVodItem = createSelector(
     getVodEntities,
     (entities: Dictionary<VodEntity>, props: {id: string}) => {
         return entities[props.id];
     }
-)
+);
 
+/* 
+    Selector of Vod by Tag input 
+    the return will be sorted by sortAsc on State and filtered by filterValue on State
+*/
 export const getVodFilteredAndSortTagByType = createSelector(
     getVodState,
     getVod,
@@ -84,12 +86,14 @@ export const getVodFilteredAndSortTagByType = createSelector(
     }
 );
 
+// Select boolean of viewAsList on State
 export const getViewAsList = createSelector(
     getVodState,
     (state) => state.viewAsList
-)
+);
 
+// Select boolean of sortAsc on State
 export const getSortAsc = createSelector(
     getVodState,
     (state) => state.sortAsc
-)
+);
